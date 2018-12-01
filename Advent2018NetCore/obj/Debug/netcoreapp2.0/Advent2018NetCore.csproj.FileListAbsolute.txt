@@ -1,0 +1,11 @@
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\bin\Debug\netcoreapp2.0\Advent2018NetCore.deps.json
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\bin\Debug\netcoreapp2.0\Advent2018NetCore.runtimeconfig.json
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\bin\Debug\netcoreapp2.0\Advent2018NetCore.runtimeconfig.dev.json
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\bin\Debug\netcoreapp2.0\Advent2018NetCore.dll
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\bin\Debug\netcoreapp2.0\Advent2018NetCore.pdb
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.csprojAssemblyReference.cache
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.csproj.CoreCompileInputs.cache
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.AssemblyInfoInputs.cache
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.AssemblyInfo.cs
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.dll
+C:\Users\Michael\Documents\Visual Studio 2017\Projects\Advent2018NetCore\Advent2018NetCore\obj\Debug\netcoreapp2.0\Advent2018NetCore.pdb
