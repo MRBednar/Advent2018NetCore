@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Advent2018NetCore.Day1;
+using Advent2018NetCore.Day2;
 
 namespace Advent2018NetCore
 {
@@ -26,6 +27,7 @@ namespace Advent2018NetCore
             dayArgument = new Dictionary<int, IDay>
             {
                 {1, new Day1Runner() },
+                {2, new Day2Runner() },
             };
     }
 }
