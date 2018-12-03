@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Advent2018NetCore": {
+      "commandName": "Project",
+      "commandLineArgs": "1"
+    }
+  }
+}
