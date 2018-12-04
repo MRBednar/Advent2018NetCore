@@ -32,6 +32,7 @@ namespace Advent2018NetCore
             }
 
             Part1(Input);
+            Part2(Input);
         }
 
         private void Part1(List<RowData> inputs)
@@ -42,9 +43,11 @@ namespace Advent2018NetCore
             var overlap = 0;
             for(var i = 0; i < inputs.Count(); i++)
             {
-                for(var w = inputs[i].LeftEdge-1; i < (inputs[i].LeftEdge + inputs[i].Width); i++)
-                {
-                    for(var h = inputs[i].TopEdge-1; h > (inputs[i].TopEdge - inputs[i].Height); h--)
+                var rowWidth = inputs[i].LeftEdge + inputs[i].Width;
+                var rowHeight = inputs[i].TopEdge + inputs[i].Height;
+                for (var w = inputs[i].LeftEdge; w < rowWidth; w++)
+                { 
+                    for (var h = inputs[i].TopEdge; h < rowHeight; h++)
                     {
                         var test = grid[w, h];
                         grid[w, h] = test + 1;
@@ -60,7 +63,31 @@ namespace Advent2018NetCore
 
         private void Part2(List<RowData> inputs)
         {
+            var maxHeight = inputs.Max(row => row.TopEdge + row.Height);
+            var maxWidth = inputs.Max(row => row.LeftEdge + row.Width);
+            int[] rows = new int[inputs.Count];
+            int[,] grid = new int[maxWidth, maxHeight];
+            var hasOverlap = new HashSet<int>();
 
+            for (var i = 0; i < inputs.Count(); i++)
+            {
+                rows[i] = i + 1;
+                var rowWidth = inputs[i].LeftEdge + inputs[i].Width;
+                var rowHeight = inputs[i].TopEdge + inputs[i].Height;
+                for (var w = inputs[i].LeftEdge; w < rowWidth; w++)
+                {
+                    for (var h = inputs[i].TopEdge; h < rowHeight; h++)
+                    {
+                        if (grid[w,h] != 0)
+                        {
+                            hasOverlap.Add(i+1);
+                            hasOverlap.Add(grid[w, h]);
+                        }
+                        grid[w, h] = i+1;
+                    }
+                }
+            }
+            Console.WriteLine("Row: " + rows.Except(hasOverlap).FirstOrDefault());
         }
 
         
