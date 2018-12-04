@@ -1,0 +1,9 @@
+[Oo]bj/
+[Bb]in/
+.vs/
+*.cache
+*.suo
+*.log
+log.json
+log.*.json
+*.orig

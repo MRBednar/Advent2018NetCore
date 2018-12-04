@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Advent2018NetCore.Day2
+namespace Advent2018NetCore
 {
     public class Day2Runner : IDay
     {
@@ -74,32 +74,38 @@ namespace Advent2018NetCore.Day2
         {
             var alphaArray = inputs.ToArray();
             Array.Sort(alphaArray);
-            List<char[]> multipleLetters = new List<char[]>();
-            List<char[]> matchLetters = new List<char[]>();
-            List<char[]> singleLetters = new List<char[]>();
+            var compareDict = new Dictionary<int, char[]>();
 
             var charArrays = alphaArray.Select(row => row.ToCharArray()).ToArray();
             var maxLen = inputs.Max(row => row.Length);
-            
-            for (var i = 0; i < maxLen; i++)
-            {
-                var test = charArrays.GroupBy(row => row[i], (key, result) => return new Dictionary<char, char[][]> {key, results}));
+            var rowCount = inputs.Count();
 
-            }
-        }
-
-        private static IEnumerable<string> FindAllSubstrings(string s)
-        {
-        List<string> list = new List<string>();
-            for (int i = 0; i < s.Length; i++)
+            for(var i = 0; i < rowCount; i++)
             {
-                for (int j = i; j < s.Length; j++)
+                for(var z = i+1; z < rowCount; z++)
                 {
-                    string ss = s.Substring(i, j - i + 1);
-                    list.Add(ss);
+                    var hasDifferentChar = false;
+
+                    for (var x = 0; x < maxLen; x++)
+                    {
+                        var topChar = charArrays[i][x];
+                        var compareChar = charArrays[z][x];
+                        if (topChar != compareChar)
+                        {
+                            if (hasDifferentChar)
+                            {
+                                break;
+                            }
+                            hasDifferentChar = true;
+                        }
+                        if( x == maxLen-1)
+                        {
+                            Console.WriteLine(new String(charArrays[i]));
+                            Console.WriteLine(new String(charArrays[z]));
+                        }
+                    }
                 }
             }
-            return list;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Advent2018NetCore.Day1
+namespace Advent2018NetCore
 {
     public class Day1Runner : IDay
     {

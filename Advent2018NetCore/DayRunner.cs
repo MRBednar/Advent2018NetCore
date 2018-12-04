@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Advent2018NetCore.Day1;
-using Advent2018NetCore.Day2;
 
 namespace Advent2018NetCore
 {
