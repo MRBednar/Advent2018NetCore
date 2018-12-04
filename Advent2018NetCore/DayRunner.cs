@@ -26,6 +26,7 @@ namespace Advent2018NetCore
             {
                 {1, new Day1Runner() },
                 {2, new Day2Runner() },
+                {3, new Day3Runner() },
             };
     }
 }
