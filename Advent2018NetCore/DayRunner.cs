@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -9,7 +10,8 @@ namespace Advent2018NetCore
 {
     class DayRunner
     {
-        private readonly IHostingEnvironment hostingEnvironment;
+        public static IConfigurationRoot ConfigRoot;
+        public static GoogleCredential GoogleCreds;
 
         public static void Main(string[] args)
         {
@@ -19,8 +21,11 @@ namespace Advent2018NetCore
             configBuilder.SetBasePath(basePath);
             configBuilder.AddJsonFile("appsettings.json");
 
-            var configurationRoot = configBuilder.Build();
+            ConfigRoot = configBuilder.Build();
 
+            var path = ConfigRoot.GetSection("Google").GetSection("FilePath").Value;
+
+            GoogleCreds = GoogleCredential.FromFile(path);
             // I wanted a simple way to run whatever day's
             // code in whatever order I wanted. This takes
             // the days as inputs and runs them one by one
@@ -29,7 +34,6 @@ namespace Advent2018NetCore
             {
                 if (int.TryParse(arg, out day))
                 {
-                    var inputUrl = String.Format(configurationRoot.GetSection("Advent").GetSection("InputUrl").Value, day);
                     dayArgument[day].Run();
                 }
                 Console.ReadKey();
@@ -42,6 +46,7 @@ namespace Advent2018NetCore
                 {1, new Day1Runner() },
                 {2, new Day2Runner() },
                 {3, new Day3Runner() },
+                {4, new Day4Runner() },
             };
     }
 }
