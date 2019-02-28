@@ -7,3 +7,4 @@
 log.json
 log.*.json
 *.orig
+appsettings.json
