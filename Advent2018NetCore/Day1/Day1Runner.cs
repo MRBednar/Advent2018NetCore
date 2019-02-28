@@ -21,32 +21,22 @@ namespace Advent2018NetCore
             {
                 gStorageClient.DownloadObject("bednar_test_bucket", "Day1Input.txt", inputFile);
 
+                var byteArrayTest = inputFile.ToArray();
+
+                inputFile.Position = 0;
                 using (var gReader = new StreamReader(inputFile))
                 {
-                    gReader.ReadToEnd();
                     while (!gReader.EndOfStream)
                     {
-                        Input.Add(int.Parse(gReader.ReadLine()));
-                        Console.WriteLine("Day 1");
-                        Part1(Input);
-                        Part2(Input);
-                        Console.WriteLine();
-                        Console.WriteLine();
+                        Input.Add(int.Parse(gReader.ReadLine()));                        
                     }
-                }
-            }
 
-            using (var reader = new StreamReader("Day1\\Day1Input.txt", Encoding.UTF8))
-            {
-                Console.WriteLine("Day 1");
-                while (!reader.EndOfStream)
-                {
-                    Input.Add(int.Parse(reader.ReadLine()));
+                    Console.WriteLine("Day 1");
+                    Part1(Input);
+                    Part2(Input);
+                    Console.WriteLine();
+                    Console.WriteLine();
                 }
-                Part1(Input);
-                Part2(Input);
-                Console.WriteLine();
-                Console.WriteLine();
             }
         }
 
