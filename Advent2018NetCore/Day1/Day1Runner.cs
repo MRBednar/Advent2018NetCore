@@ -1,42 +1,30 @@
-﻿using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Storage.V1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore
 {
-    public class Day1Runner : IDay
+    public class Day1Runner : AbstractDay
     {
-        public void Run()
+        override public void Run()
         {
             List<int> Input = new List<int>();
 
             var gStorageClient = StorageClient.Create(DayRunner.GoogleCreds);
 
-            using (var inputFile = new MemoryStream())
+            using (var gReader = GetInputs())
             {
-                gStorageClient.DownloadObject("bednar_test_bucket", "Day1Input.txt", inputFile);
-
-                var byteArrayTest = inputFile.ToArray();
-
-                inputFile.Position = 0;
-                using (var gReader = new StreamReader(inputFile))
+                while (!gReader.EndOfStream)
                 {
-                    while (!gReader.EndOfStream)
-                    {
-                        Input.Add(int.Parse(gReader.ReadLine()));                        
-                    }
-
-                    Console.WriteLine("Day 1");
-                    Part1(Input);
-                    Part2(Input);
-                    Console.WriteLine();
-                    Console.WriteLine();
+                    Input.Add(int.Parse(gReader.ReadLine()));
                 }
+
+                Console.WriteLine("Day 1");
+                Part1(Input);
+                Part2(Input);
+                Console.WriteLine();
+                Console.WriteLine();
             }
         }
 

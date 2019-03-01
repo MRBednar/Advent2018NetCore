@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using Google.Apis.Auth.OAuth2;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Advent2018NetCore
@@ -12,6 +10,9 @@ namespace Advent2018NetCore
     {
         public static IConfigurationRoot ConfigRoot;
         public static GoogleCredential GoogleCreds;
+        public static int Day;
+        public static string BucketName;
+        public static string FileName;
 
         public static void Main(string[] args)
         {
@@ -22,19 +23,20 @@ namespace Advent2018NetCore
             configBuilder.AddJsonFile("appsettings.json");
 
             ConfigRoot = configBuilder.Build();
+            BucketName = ConfigRoot.GetSection("Google").GetSection("BucketName").Value;
+            FileName = ConfigRoot.GetSection("Google").GetSection("FileName").Value;
 
-            var path = ConfigRoot.GetSection("Google").GetSection("FilePath").Value;
+            var path = Environment.GetEnvironmentVariable("gCredFilePath");
 
             GoogleCreds = GoogleCredential.FromFile(path);
             // I wanted a simple way to run whatever day's
             // code in whatever order I wanted. This takes
             // the days as inputs and runs them one by one
-            int day;
             foreach (string arg in args)
             {
-                if (int.TryParse(arg, out day))
+                if (int.TryParse(arg, out Day))
                 {
-                    dayArgument[day].Run();
+                    dayArgument[Day].Run();
                 }
                 Console.ReadKey();
             }
