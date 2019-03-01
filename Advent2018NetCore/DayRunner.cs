@@ -38,8 +38,11 @@ namespace Advent2018NetCore
                 {
                     dayArgument[Day].Run();
                 }
+                Console.WriteLine("End of Day!");
                 Console.ReadKey();
             }
+            Console.WriteLine("End of run!");
+            Console.ReadKey();
         }
 
         public static Dictionary<int, IDay>
