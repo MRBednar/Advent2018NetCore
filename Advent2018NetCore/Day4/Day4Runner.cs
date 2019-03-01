@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore
 {
-    public class Day4Runner : IDay
+    public class Day4Runner : AbstractDay
     {
-        public void Run()
+        override public void Run()
         {
             List<LogEntry> Input = new List<LogEntry>();
 
@@ -18,6 +19,12 @@ namespace Advent2018NetCore
                     var rowString = reader.ReadLine();
                     var stringParts = rowString.Split(' ');
                 }
+            }
+
+            var gStorageClient = StorageClient.Create(DayRunner.GoogleCreds);
+            using (var gReader = GetInputs())
+            {
+
             }
         }
 

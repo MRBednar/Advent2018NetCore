@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore

@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore
 {
-    public class Day2Runner : IDay
+    public class Day2Runner : AbstractDay
     {
-        public void Run()
+        override public void Run()
         {
             List<string> Input = new List<string>();
+            var gStorageClient = StorageClient.Create(DayRunner.GoogleCreds);
 
-            using (var reader = new StreamReader("Day2\\Day2Input.txt", Encoding.UTF8))
+            using (var gReader = GetInputs())
             {
                 Console.WriteLine("Day 2");
-                while (!reader.EndOfStream)
+                while (!gReader.EndOfStream)
                 {
-                    Input.Add(reader.ReadLine());
+                    Input.Add(gReader.ReadLine());
                 }
                 Part1(Input);
                 Part2(Input);

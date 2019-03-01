@@ -1,8 +1,5 @@
 ﻿using Google.Cloud.Storage.V1;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Advent2018NetCore
 {
