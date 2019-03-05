@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore
 {
-    public class Day3Runner : IDay
+    public class Day3Runner : AbstractDay
     {
-        public void Run()
+        override public void Run()
         {
             List<RowData> Input = new List<RowData>();
+            var gStorageClient = StorageClient.Create(DayRunner.GoogleCreds);
 
-            using (var reader = new StreamReader("Day3\\Day3Input.txt", Encoding.UTF8))
+            using (var gReader = GetInputs())
             {
-                while (!reader.EndOfStream)
+                while (!gReader.EndOfStream)
                 {
-                    var rowString = reader.ReadLine();
+                    var rowString = gReader.ReadLine();
                     var stringParts = rowString.Split(' ');
                     var id = int.Parse(stringParts[0].Replace('#', ' ').Trim());
                     var edges = stringParts[2].Split(',');

@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
+using Google.Cloud.Storage.V1;
 
 namespace Advent2018NetCore
 {
-    public class Day1Runner : IDay
+    public class Day1Runner : AbstractDay
     {
-        public void Run()
+        override public void Run()
         {
             List<int> Input = new List<int>();
 
-            using (var reader = new StreamReader("Day1\\Day1Input.txt", Encoding.UTF8))
+            var gStorageClient = StorageClient.Create(DayRunner.GoogleCreds);
+
+            using (var gReader = GetInputs())
             {
-                Console.WriteLine("Day 1");
-                while (!reader.EndOfStream)
+                while (!gReader.EndOfStream)
                 {
-                    Input.Add(int.Parse(reader.ReadLine()));
+                    Input.Add(int.Parse(gReader.ReadLine()));
                 }
+
+                Console.WriteLine("Day 1");
                 Part1(Input);
                 Part2(Input);
                 Console.WriteLine();
@@ -44,7 +46,7 @@ namespace Advent2018NetCore
             var freaqTwice = false;
             int frequency = 0;
             Console.WriteLine("Part 2");
-            while(!freaqTwice)
+            while (!freaqTwice)
             {
                 foreach (int input in inputs)
                 {
@@ -60,7 +62,7 @@ namespace Advent2018NetCore
                         frequencyHistory.Add(frequency);
                     }
                 }
-            }            
+            }
         }
     }
 }

@@ -2,7 +2,10 @@
   "profiles": {
     "Advent2018NetCore": {
       "commandName": "Project",
-      "commandLineArgs": "3"
+      "commandLineArgs": "4",
+      "environmentVariables": {
+        "gCredFilePath": "C:\\Users\\Bednar\\Downloads\\My First Project-e283fb96d182.json"
+      }
     }
   }
 }
